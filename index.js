@@ -20,9 +20,7 @@ import {
 } from "./controllers/index.js";
 
 mongoose
-  .connect(
-    "mongodb+srv://admin:admin@cluster0.yfgnsvv.mongodb.net/pizzeria?retryWrites=true&w=majority"
-  )
+  .connect(process.env.MONGODB_URI)
   .then(() => console.log("DB OK"))
   .catch((err) => console.log("DB ERROR", err));
 
@@ -84,6 +82,11 @@ app.get("/orders", checkAuth, OrderController.getOrdersByUser);
 //   if (err) {
 //     console.log(err);
 //   }
+app.listen(process.env.PORT || 4000, (err) => {
+  if (err) {
+    return console.log(err);
+  }
 
-console.log("Server OK!");
+  console.log("Server OK!");
+});
 // });
