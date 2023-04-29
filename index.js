@@ -80,10 +80,10 @@ app.post(
 );
 app.get("/orders", checkAuth, OrderController.getOrdersByUser);
 
-app.listen(4000, (err) => {
-  if (err) {
-    console.log(err);
-  }
+// app.listen(4000, (err) => {
+//   if (err) {
+//     console.log(err);
+//   }
 
-  console.log("Server OK!");
-});
+console.log("Server OK!");
+// });
