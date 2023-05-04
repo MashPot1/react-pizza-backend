@@ -20,9 +20,7 @@ import {
 } from "./controllers/index.js";
 
 mongoose
-  .connect(
-    "mongodb+srv://admin:admin@cluster0.yfgnsvv.mongodb.net/pizzeria?retryWrites=true&w=majority"
-  )
+  .connect(process.env.MONGODB_URI)
   .then(() => console.log("DB OK"))
   .catch((err) => console.log("DB ERROR", err));
 
