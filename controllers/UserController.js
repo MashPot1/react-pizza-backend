@@ -16,6 +16,12 @@ export const signUp = async (req, res) => {
       idUser = 1;
     }
 
+    if (await UserModel.findOne({ email: req.body.email })) {
+      return res.status(500).json({
+        message: "Не удалось зарегистрироваться",
+      });
+    }
+
     const userId = idUser;
 
     const doc = new UserModel({
